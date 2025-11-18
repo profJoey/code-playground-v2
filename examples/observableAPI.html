@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta content="text/html; charset=UTF-8; X-Content-Type-Options=nosniff" http-equiv="Content-Type" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>My Portfolio</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="../global.css" />
+    <script src="../global.js" defer></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inclusive+Sans&family=Mooli&display=swap" rel="stylesheet">
+
+    <style>
+        .observable {
+            margin-top: 120px;
+            margin-bottom: 120px; 
+            width: 200px;
+            height: 200px;
+            min-height: 200px;
+            min-width: 200px;
+            background-color: white;
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+        .animate-opacity {
+            opacity: 1;
+        }
+    </style>
+
+  </head>
+  <body>
+    <header></header>
+    <nav></nav>
+    <main>
+        <div class="observable"></div>
+        <div class="observable"></div>
+        <div class="observable"></div>
+        <div class="observable"></div>
+        <div class="observable"></div>
+        <div class="observable"></div>
+        <div class="observable"></div>
+        <div class="observable"></div>
+    </main>
+    <footer></footer>
+
+    <script>
+        function observeElementWithClass(className) {
+        var elements = document.querySelectorAll('.' + className);
+
+        var observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("animate-opacity");
+            } else {
+                entry.target.classList.remove("animate-opacity");
+            }
+            });
+        }, { threshold: 0.8 });
+
+        elements.forEach(function(element) {
+            observer.observe(element);
+        });
+        }
+
+        observeElementWithClass("observable");
+    </script>
+
+  </body>
+</html>

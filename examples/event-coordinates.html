@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta content="text/html; charset=UTF-8; X-Content-Type-Options=nosniff" http-equiv="Content-Type" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>My Portfolio</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="../global.css" />
+    <script src="../global.js" defer></script>
+    <!-- Use Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inclusive+Sans&family=Mooli&display=swap" rel="stylesheet">
+
+    <style>
+        .created-element {
+            position: absolute;
+            background-color: #3498db;
+            top: 0;
+            bottom: 0;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+    </style>
+
+  </head>
+  <body>
+    <header></header>
+    <nav></nav>
+    <main>
+    </main>
+    <footer></footer>
+  </body>
+
+  <script>
+        //store an array of colors
+        //we'll pick a color randomly to set the background of our newly created elements.
+        const colors = ['#3498db', '#e74c3c', '#2ecc71', '#f1c40f', '#9b59b6', '#e67e22', '#1abc9c', '#34495e'];
+
+        //add an event listenr of 'DOMContentLoad' to ensure the elements have loaded into the DOM
+        //We don't technically need this event listener because the script is ready after the elements are loaded
+        document.addEventListener('DOMContentLoaded', function () {
+            document.body.addEventListener('click', function (event) {
+              
+              console.log(event);
+              
+              // Create a new DOM element
+                const element = document.createElement('div');
+                //sets a class name for the element
+                element.className = 'created-element';
+
+                // Set the element's position to where the click occurred
+                //Instead of positioning the element by it's top/left corner center the element using math
+                element.style.left = (event.clientX - 25) + 'px'; // Subtract half of the width
+                element.style.top = (event.clientY - 25) + 'px'; // Subtract half of the height
+
+                // Select a color from the array using a randomly generated index number
+                //Ensure the index number is a whole integer
+                //Ensure the index number is no higher than the number of items in the array 
+                const randomColor = colors[Math.floor(Math.random() * colors.length)];
+
+                //Set the properties style > backgroundColor to the randomly selected color hexcode
+                element.style.backgroundColor = randomColor;
+
+                // Append the element to the body
+                document.body.appendChild(element);
+            });
+        });
+  </script>
+  
+</html>

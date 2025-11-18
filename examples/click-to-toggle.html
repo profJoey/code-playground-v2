@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta content="text/html; charset=UTF-8; X-Content-Type-Options=nosniff" http-equiv="Content-Type" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>My Portfolio</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="../global.css" />
+    <script src="../global.js" defer></script>
+    <!-- Use Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inclusive+Sans&family=Mooli&display=swap" rel="stylesheet">
+
+    <style>
+      .basic-block {
+        width: 200px;
+        height: 200px;
+        background-color: white;
+        margin: 1rem;
+      } 
+      .basic-block.clicked {
+        background-color: green;
+      }
+    </style>
+
+  </head>
+  <body>
+    <header></header>
+    <nav></nav>
+    <main>
+      <article>
+        <div class="basic-block"></div>
+        <div class="basic-block"></div>
+        <div class="basic-block"></div>
+      </article>
+    </main>
+    <footer></footer>
+  </body>
+
+  <script>
+    let divs = document.querySelectorAll('.basic-block');
+
+    divs.forEach(function(div){
+      div.addEventListener('click', function(){
+        this.classList.toggle('clicked');
+      });
+    });
+  </script>
+  
+</html>

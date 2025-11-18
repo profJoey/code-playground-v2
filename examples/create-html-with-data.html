@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta content="text/html; charset=UTF-8; X-Content-Type-Options=nosniff" http-equiv="Content-Type" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Create HTML with Data</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="../global.css" />
+    <script src="../global.js" defer></script>
+    <!-- Use Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inclusive+Sans&family=Mooli&display=swap" rel="stylesheet">
+
+    <style>
+      button#createArticles {
+        margin: 2rem;
+        padding: 1rem;
+        border-radius: 0;
+      }
+      article {
+        display: block;
+        border: 1px solid white;
+        border-radius: 15px;
+        padding: 1rem;
+        text-align: left;
+      }
+    </style>
+
+  </head>
+  <body>
+    <header></header>
+    <nav></nav>
+    <main>
+      <!-- this button triggers the function that creates the articles -->
+      <button id="createArticles">Create Articles</button>
+      <!-- this element is where the function appends each article -->
+      <section id="articles"></section>
+    </main>
+    <footer></footer>
+  </body>
+
+  <script>
+    //the content for each article is stored in this array
+    let data = [
+      {
+        id: "article-1",
+        h2: "Article One",
+        p: "Ut elit veniam id do in cillum deserunt elit officia esse veniam."
+      },
+      {
+        id: "article-2",
+        h2: "Article Two",
+        p: "Sint duis aute reprehenderit mollit labore sunt ut."
+      },
+      {
+        id: "article-3",
+        h2: "Article Three",
+        p: "Ea aliquip occaecat nostrud irure dolore veniam in nostrud quis reprehenderit nisi."
+      }
+    ];
+    
+    //this function creates html for each object in the array
+    //and inserts that data from each object into that html
+    function createHtmlForData(){
+
+      //this loop iterates over each object in the 'data' array
+      data.forEach(function(item){    
+        let itemID = item.id;
+        let itemP = item.p;
+        let itemH2 = item.h2;
+
+        //creates an article element and sets the id to the object's 'id' property
+        var itemElement = document.createElement("article");
+        itemElement.setAttribute("id", itemID);
+
+        //creates an h2 element and sets the text to the object's 'h2' property
+        var h2Element = document.createElement("h2");
+        h2Element.innerText = itemH2; 
+        
+
+        //creates a p element and sets the text to the object's 'p' property
+        var pElement = document.createElement("p");
+        pElement.innerText = itemP; 
+
+        //appends the 'h2' and 'p' elements to the article element
+        itemElement.append(h2Element);
+        itemElement.append(pElement);
+
+        //appends each article element to the '#articles' section
+        const articlesContainer = document.querySelector("#articles");
+        articlesContainer.append(itemElement);
+      });
+    };
+
+    //adds an event listener to the button that triggers the above 'createHtmlForData' function
+    const createArticlesButton = document.querySelector("#createArticles");
+    createArticlesButton.addEventListener('click',createHtmlForData);
+  </script>
+  
+</html>

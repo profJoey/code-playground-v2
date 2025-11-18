@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta content="text/html; charset=UTF-8; X-Content-Type-Options=nosniff" http-equiv="Content-Type" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Create HTML with Data</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="../global.css" />
+    <script src="../global.js" defer></script>
+    <!-- Use Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inclusive+Sans&family=Mooli&display=swap" rel="stylesheet">
+
+    <style>
+      button {
+        padding: 1rem;
+        border-radius: 0;
+      }
+      article {
+        display: block;
+        border: 1px solid white;
+        border-radius: 15px;
+        padding: 1rem;
+        text-align: left;
+      }
+    </style>
+
+  </head>
+  <body>
+    <header></header>
+    <nav></nav>
+    <main>
+      <button id="createArticles">Create Articles</button>
+      <section id="articles"></section>
+    </main>
+    <footer></footer>
+  </body>
+
+  <script>
+    let data = [
+      {
+        id: "article-1",
+        h2: "Article One",
+        p: "Ut elit veniam id do in cillum deserunt elit officia esse veniam."
+      },
+      {
+        id: "article-2",
+        h2: "Article Two",
+        p: "Sint duis aute reprehenderit mollit labore sunt ut."
+      },
+      {
+        id: "article-3",
+        h2: "Article Three",
+        p: "Ea aliquip occaecat nostrud irure dolore veniam in nostrud quis reprehenderit nisi."
+      }
+    ];
+    
+    function createHtmlForData(){
+      data.forEach(function(item){    
+        let itemID = item.id;
+        let itemP = item.p;
+        let itemH2 = item.h2;
+        
+        var itemElement = document.createElement("article");
+        itemElement.setAttribute("id", itemID);
+
+        var h2Element = document.createElement("h2");
+        h2Element.innerText = itemH2; 
+        itemElement.append(h2Element);
+
+        var pElement = document.createElement("p");
+        pElement.innerText = itemP; 
+        itemElement.append(pElement);
+
+        const articlesContainer = document.querySelector("#articles");
+        articlesContainer.append(itemElement);
+      });
+    };
+    const createArticlesButton = document.querySelector("#createArticles");
+    createArticlesButton.addEventListener('click',createHtmlForData);
+  </script>
+  
+</html>

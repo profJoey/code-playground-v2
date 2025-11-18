@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta content="text/html; charset=UTF-8; X-Content-Type-Options=nosniff" http-equiv="Content-Type" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>My Portfolio</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="../global.css" />
+    <script src="../global.js" defer></script>
+    <!-- Use Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inclusive+Sans&family=Mooli&display=swap" rel="stylesheet">
+
+    <style>
+      section > div {
+        width: 200px;
+        height: 200px;
+        background-color: white;
+      } 
+      .basic-block.clicked {
+        background-color: green;
+      }
+      section {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+        color: black;
+      }
+      section > div {
+        margin: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 150px;
+      }
+      .hide {
+        display: none;
+      }
+    </style>
+
+  </head>
+  <body>
+    <header></header>
+    <nav></nav>
+    <main>
+      <!-- these button will show/hide their respective element-->
+      <div>
+        <button id="home-button">Home</button>
+        <button id="work-button">Work</button>
+      </div>
+      <!-- these elements (and their children) will show/hide when the corresponding button is clicked -->
+      <section id="home">
+        <div>H</div>
+        <div>O</div>
+        <div>M</div>
+        <div>E</div>
+      </section>
+      <section id="work" class="hide">
+        <div>W</div>
+        <div>O</div>
+        <div>R</div>
+        <div>K</div>
+      </section>
+    </main>
+    <footer></footer>
+  </body>
+
+  <script>
+   
+    //get the buttons that will trigger each state change
+    const workButton = document.querySelector('#work-button');
+    const homeButton = document.querySelector('#home-button');
+
+    //get the elements that will change state when the corresponding button is clicked
+    const homeDiv = document.querySelector('#home');
+    const workDiv = document. querySelector('#work');
+    
+    //add the 'click' event listener that triggers the corresponding function
+    workButton.addEventListener('click', showWorkAndHideHome);
+    homeButton.addEventListener('click', showHomeAndHideWork);
+
+    //ensures that anytime this function runs, only the 'home' element (and it's children) are hidden
+    function showWorkAndHideHome () {
+      workDiv.classList.remove ('hide');
+      homeDiv.classList.add ('hide');
+    }
+
+    //ensures that anytime this function runs, only the 'work' element (and it's children) are hidden
+    function showHomeAndHideWork () {
+      workDiv.classList.add ('hide');
+      homeDiv.classList.remove('hide')
+    }
+
+  </script>
+  
+</html>

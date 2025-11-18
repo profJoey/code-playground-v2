@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta content="text/html; charset=UTF-8; X-Content-Type-Options=nosniff" http-equiv="Content-Type" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>My Portfolio</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="../global.css" />
+    <script src="../global.js" defer></script>
+    <!-- Use Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inclusive+Sans&family=Mooli&display=swap" rel="stylesheet">
+
+    <style>
+      article {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      article > div {
+        margin: 10px;
+      }
+      div {
+        width: 200px;
+        height: 200px;
+        background-color: white;
+      }
+      /* Any element with this class will have a green background color */ 
+      .clicked {
+        background-color: green;
+      }
+    </style>
+
+  </head>
+  <body>
+    <header></header>
+    <nav></nav>
+    <main>
+      <article>
+        <!-- these element will get the '.basic-block.clicked' class when clicked -->
+        <div class="basic-block"></div>
+        <div class="basic-block"></div>
+        <div class="basic-block"></div>
+        <div class="basic-block"></div>
+      </article>
+    </main>
+    <footer></footer>
+    <script>
+      //gets all of the divs on the page
+      //it returns a nodeList which we can treat as an array
+      const divs = document.querySelectorAll('.basic-block');
+      //iterates over each div element in the nodeList (array)
+      divs.forEach(div => {
+        //adds an 'click' even listener to each div
+        div.addEventListener('click', () => {
+          //when clicked, ensures that no div elements have the 'clicked' class
+          divs.forEach(div => {
+            div.classList.remove('clicked');
+          });
+          //then adds the 'clicked' class to only the the element that was clicked on
+          div.classList.add('clicked');
+        });
+      }); //effectively, this entire function ensures that only one element changes state at a time each time an element is clickeds.
+  
+    </script>
+  </body>  
+</html>
