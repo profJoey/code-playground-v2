@@ -118,4 +118,5 @@ footer {
 }
 #examples-menu {
   /* overflow-y: scroll; */
+  width: 35vw;
 }

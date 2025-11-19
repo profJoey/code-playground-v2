@@ -130,6 +130,7 @@ if (pageObject) {
 }
 
 function createPageContent(object) {
+  let examplesMenu = document.querySelector("#examples-menu");
   let header = document.querySelector("header");
   let h1 = document.createElement("h1");
   let video = object.video;
@@ -139,7 +140,7 @@ function createPageContent(object) {
   description.innerText = object.description;
   header.appendChild(description);
   if (video) {
-    header.innerHTML += video;
+    examplesMenu.insertAdjacentHTML('afterbegin', video);
   }
   const title = document.querySelector("title");
   title.innerText = object.name;
